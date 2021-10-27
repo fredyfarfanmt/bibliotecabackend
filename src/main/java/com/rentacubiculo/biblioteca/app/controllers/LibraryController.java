@@ -52,7 +52,7 @@ public class LibraryController {
     }
     
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable ("id") int clientId ){
-        return service.delete(clientId);
+    public boolean delete(@PathVariable ("id") int id ){
+        return service.delete(id);
     }
 }
