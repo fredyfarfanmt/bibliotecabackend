@@ -50,7 +50,7 @@ public class CategoryController {
         return service.update(category);
     }
     
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     public boolean delete(@PathVariable ("id") int categoryId ){
         return service.delete(categoryId);
     }

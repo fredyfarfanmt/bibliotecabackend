@@ -51,7 +51,7 @@ public class LibraryController {
         return service.update(library);
     }
     
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     public boolean delete(@PathVariable ("id") int clientId ){
         return service.delete(clientId);
     }

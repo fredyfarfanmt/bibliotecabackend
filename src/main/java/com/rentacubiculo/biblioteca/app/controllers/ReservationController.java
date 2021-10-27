@@ -52,7 +52,7 @@ public class ReservationController {
         return service.update(reservation);
     }
     
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     public boolean delete(@PathVariable ("id") int reservationId ){
         return service.delete(reservationId);
     }
