@@ -35,7 +35,7 @@ public class LibraryController {
     private LibraryService service;
     
     @GetMapping("/all")
-    public List<Library> getClients(){
+    public List<Library> getLibrarys(){
         return service.getAll();
     }
     
@@ -52,7 +52,7 @@ public class LibraryController {
     }
     
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable ("id") int id ){
-        return service.delete(id);
+    public boolean delete(@PathVariable ("id") int libraryId ){
+        return service.delete(libraryId);
     }
 }

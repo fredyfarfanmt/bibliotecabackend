@@ -26,7 +26,7 @@ public class ClientRepository {
     /**
      * Consultar
      */
-    public List<Client> getAll(){
+        public List<Client> getAll(){
         return (List<Client>) repository.findAll();
     }
     
