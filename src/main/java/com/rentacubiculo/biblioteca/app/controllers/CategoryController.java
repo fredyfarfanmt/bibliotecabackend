@@ -50,8 +50,10 @@ public class CategoryController {
         return service.update(category);
     }
     
-    @DeleteMapping("/{id}")
+     @DeleteMapping("/{id}")
+     //@ResponseStatus (HttpStatus.CREATED)
     @ResponseStatus(HttpStatus.NO_CONTENT)
+     
     public boolean delete(@PathVariable ("id") int categoryId ){
         return service.delete(categoryId);
     }
