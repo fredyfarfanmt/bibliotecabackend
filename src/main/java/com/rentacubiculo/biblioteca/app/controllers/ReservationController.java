@@ -35,9 +35,10 @@ public class ReservationController {
     @Autowired
     private ReservationService service;
     
-    @GetMapping("/all")
-    public List<Reservation> getReservations(){
-        return service.getAll();
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(
+    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return service.getReservationsPeriod(dateOne,dateTwo);
     }
     
     @PostMapping("/save")

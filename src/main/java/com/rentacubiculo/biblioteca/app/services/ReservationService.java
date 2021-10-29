@@ -78,4 +78,8 @@ public class ReservationService {
         }).orElse(false);
         return aBoolean;
     } 
+
+    public List<Reservation> getReservationsPeriod(String dateOne, String dateTwo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
