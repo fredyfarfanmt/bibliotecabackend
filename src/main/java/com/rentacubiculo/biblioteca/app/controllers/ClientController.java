@@ -55,7 +55,8 @@ public class ClientController {
      //@ResponseStatus (HttpStatus.CREATED)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     
-    public boolean delete(@PathVariable ("id") int clientId ){
-        return service.delete(clientId);
+    public List<Client> delete(@PathVariable ("id") int clientId ){
+        service.delete(clientId);
+        return getClients();
     }
 }

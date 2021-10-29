@@ -54,8 +54,9 @@ public class CategoryController {
      //@ResponseStatus (HttpStatus.CREATED)
     @ResponseStatus(HttpStatus.NO_CONTENT)
      
-    public boolean delete(@PathVariable ("id") int categoryId ){
-        return service.delete(categoryId);
+    public List<Category> delete(@PathVariable ("id") int categoryId ){
+        service.delete(categoryId);
+        return getCategorys();
     }
 }
 

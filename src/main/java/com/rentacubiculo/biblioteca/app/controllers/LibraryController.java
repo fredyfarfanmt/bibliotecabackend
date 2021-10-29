@@ -55,7 +55,8 @@ public class LibraryController {
      //@ResponseStatus (HttpStatus.CREATED)
     @ResponseStatus(HttpStatus.NO_CONTENT)
      
-    public boolean delete(@PathVariable ("id") int libraryId ){
-        return service.delete(libraryId);
+    public List<Library> delete(@PathVariable ("id") int libraryId ){
+        service.delete(libraryId);
+        return getLibrarys();
     }
 }
