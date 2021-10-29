@@ -35,10 +35,9 @@ public class ReservationController {
     @Autowired
     private ReservationService service;
     
-    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
-    public List<Reservation> getReservationsReportDates(
-    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
-        return service.getReservationsPeriod(dateOne,dateTwo);
+    @GetMapping("/all")
+    public List<Reservation> getReservations(){
+        return service.getAll();
     }
     
     @PostMapping("/save")
@@ -60,4 +59,20 @@ public class ReservationController {
     public boolean delete(@PathVariable ("id") int reservationId ){
         return service.delete(reservationId);
     }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(
+    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return service.getReservationsPeriod(dateOne,dateTwo);
+    }
+    
+    //@GetMapping("/report-status")
+    //public List<Reservation> getReservationsReportStatus()(
+    //    return service.getReservationsReportStatus();
+    //}
+    
+    //@GetMapping("/report-clientes")
+    //public List<Reservation> getReservationsReportClient){
+    //    return service.getAll();
+    //}
 }
