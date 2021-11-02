@@ -5,8 +5,14 @@
  */
 package com.rentacubiculo.biblioteca.app.services;
 
+import com.rentacubiculo.biblioteca.app.entities.CountClients;
+import com.rentacubiculo.biblioteca.app.entities.CountScore;
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.repositories.ReservationRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +85,43 @@ public class ReservationService {
         return aBoolean;
     } 
 
-    public List<Reservation> getReservationsPeriod(String dateOne, String dateTwo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Reservation> getReservationsPeriod(String dateA, String dateB)
+    {
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat parser = new SimpleDateFormat(pattern);
+        Date a = new Date();
+        Date b = new Date();
+    try {
+            a = parser.parse(dateA);
+            b = parser.parse(dateB);
+        }
+    catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+    if(a.before(b))
+        {
+            return repository.getReservationPeriod(a, b);
+        }
+    else
+       {
+         return new ArrayList<>();
+       }
+
     }
+    
+    public CountScore getStatusScore() 
+    {
+        List<Reservation> completed= repository.getLibraryByStatus("completed");
+        List<Reservation> cancelled= repository.getLibraryByStatus("cancelled");
+        
+        CountScore coSco = new CountScore(completed.size(),cancelled.size());
+        return coSco;
+    } 
+    
+    //Ordenar Clientes
+    public List<CountClients> getTopByClient()
+     {
+        return repository.getToClientByClient();
+     }
 }

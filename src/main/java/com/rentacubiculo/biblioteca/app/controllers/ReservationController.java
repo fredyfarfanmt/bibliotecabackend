@@ -5,6 +5,8 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
+import com.rentacubiculo.biblioteca.app.entities.CountClients;
+import com.rentacubiculo.biblioteca.app.entities.CountScore;
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.services.ReservationService;
 import java.util.List;
@@ -62,17 +64,23 @@ public class ReservationController {
     
     @GetMapping("/report-dates/{dateOne}/{dateTwo}")
     public List<Reservation> getReservationsReportDates(
-    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
-        return service.getReservationsPeriod(dateOne,dateTwo);
+    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo)
+    {
+        return  service.getReservationsPeriod(dateOne,dateTwo);
+        
     }
     
-    //@GetMapping("/report-status")
-    //public List<Reservation> getReservationsReportStatus()(
-    //    return service.getReservationsReportStatus();
-    //}
+    @GetMapping("/report-status")
+    public CountScore getReservationStatus()
+    {
+        return service.getStatusScore();
+    }
+        
+    @GetMapping("/report-clients")
+    public List<CountClients> gerReport()
+    {
+        return service.getTopByClient();
+    }
     
-    //@GetMapping("/report-clientes")
-    //public List<Reservation> getReservationsReportClient){
-    //    return service.getAll();
-    //}
+   
 }
